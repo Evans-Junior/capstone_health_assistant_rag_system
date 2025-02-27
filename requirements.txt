@@ -1,5 +1,4 @@
 gdown
 chromadb
-sklearn
 pandas
 subprocess
