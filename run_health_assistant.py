@@ -1,4 +1,4 @@
-import script.get_dataset as get_dataset
+# import script.get_dataset as get_dataset
 from database.chromadb_setup import initialize_chromadb, query_chromadb
 from models.meditron_model import run_meditron_health_assistant
 import pandas as pd
