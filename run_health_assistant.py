@@ -2,7 +2,7 @@
 from database.chromadb_setup import initialize_chromadb, query_chromadb
 from models.meditron_model import run_meditron_health_assistant
 import pandas as pd
-import gdown
+# import gdown
 from  config.settings import DATASET_PATH
 
 # Load the CSV into a DataFrame
