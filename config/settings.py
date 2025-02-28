@@ -5,6 +5,8 @@ import os
 # -------------------------
 # Path to the dataset CSV file
 DATASET_PATH = "../data/balanced_dataset.csv"
+DATASET_PATH_ = "./data/balanced_dataset.csv"
+
 # Path where you want to save the dataset with health advice
 OUTPUT_PATH = "balanced_dataset_with_health_advice.csv"
 

@@ -3,10 +3,10 @@ from database.chromadb_setup import initialize_chromadb, query_chromadb
 from models.meditron_model import run_meditron_health_assistant
 import pandas as pd
 # import gdown
-from  config.settings import DATASET_PATH
+from  config.settings import DATASET_PATH_
 
 # Load the CSV into a DataFrame
-df = pd.read_csv(DATASET_PATH)
+df = pd.read_csv(DATASET_PATH_)
 
 # Now, let's loop through the dataset and process each row
 # Assuming 'label' is the target column and the rest are sensor readings
