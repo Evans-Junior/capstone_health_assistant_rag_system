@@ -10,13 +10,9 @@ import subprocess
 from config.settings import MEDITRON_MODEL_NAME, HEALTH_ASSISTANT_ROLE
 
 def run_meditron_health_assistant(sensor_data=None, symptoms=None, question=None):
-    """
-    Run the Meditron model using Ollama to generate health advice.
-    """
-    # Define the Meditron prompt with health assistant role
     prompt = HEALTH_ASSISTANT_ROLE
+    input_data = ""
 
-    # Form the input based on available data
     if sensor_data:
         input_data = f"Sensor data: {sensor_data}. Please analyze and provide health advice."
     elif symptoms:
@@ -24,20 +20,19 @@ def run_meditron_health_assistant(sensor_data=None, symptoms=None, question=None
     elif question:
         input_data = f"Question: {question}. Please provide a detailed response."
     else:
-        input_data = "No sensor data or symptoms provided. Please describe the patient's condition for advice."
+        input_data = "No sensor data provided."
 
-    # Construct full prompt
-    full_prompt = f"{prompt}\n{input_data}\nAsk for more details if needed and offer lifestyle recommendations."
+    full_prompt = f"{prompt}\n{input_data}"
 
-    # Run Ollama model and capture output
     try:
         result = subprocess.run(
-            ["ollama", "run", MEDITRON_MODEL_NAME],  # Pass command as list
-            input=full_prompt,  # Send input directly
-            capture_output=True, text=True, check=True
+            ["ollama", "run", MEDITRON_MODEL_NAME],
+            input=full_prompt,
+            capture_output=True,
+            text=True,
+            check=True
         )
-        return result.stdout.strip() if result.stdout else "No response from model."
-    
+        return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         return f"Error running Meditron model: {e.stderr}"
 
